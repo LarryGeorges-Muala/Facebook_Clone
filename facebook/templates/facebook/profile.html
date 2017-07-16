@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Profile | facebook Clone</title>
+	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAACXiYYA9vTzAPnz8ADk4NwA5d7fALKcmgDn4NwA+fX2AOng3ADl4uIA3s/FAPz9/ACyioAA29TUAO7r6wDy7usAzsLDAKqYmABgTUsA7OHXANXLzADYyskA+vj3APn5+gC6nZUAxLi4ALShoQDn5uYA6ubmAN3PxgDt5uYA/v39AN3RzAB/aGUAyMC+ANC6tQDVvbUA8+3pAM3BwQDKp6EArJuZAMGurQDk3d4A08bHAMOysADCs7MA9/f1AMS3tgD7/PsA/fv4AMa4uQCfkY4AoY6OAPv9/gD9/f4AyL65ANrT0wC5paUAysC/AM7BwgD08e0Ab15bAPbz8wC/srEA6uPfAPv8/ACpioMAxbu6AODNwgD8/PwA/fz8ALSlpgDIu7oA///8AM66twDLvroA7+rrAN/T1ADv7u4A4tzdALmWjADp3toA9/f3AMa0rwDKtK8A2M3MAPv8/QDq5eYA/fz9AP/8/QDs6ekA3NbVAM6+uwDTvbgA9O/pAPPw7ACXg4IA8vLyAPTy8gD69fIA5+DhAPv59QD6+/sA+/v7AO3l3gDc0M0A/v77AKORkQDt6OcA29LTAP///gDv6+cA7u3tAN3W1gDz6+cA8O3tAK6TjgDOwr8A49nWAOXa0ADPxMUA0cTFAFxKRwDo3dkA6tzWAPj18wDUyMgA+Pb2AHlhXgDEtrcApomDANrMywD7+/wA8OPZALOmowD9+/wA+v//AN3PywDZ0dEA/P//AP///wDw6uUAuqipALCQjwDMxsMA9fHxANPDwwC4m5UA5ePjAPr6+gD7+voAxbm4AP79+gDIursA7OjpAKaPjQDu6+kA7uzsAO/s7ADz7+wAvbCwANbEvgDRx8cA+PPvAPb19QCuoJwAwrSzAMazsADW0NAA+v7+ANnQ0ADu5eEA/P7+AP79+wDr5+cA7efnAP7+/gD//v4AuaalALCLggDc1NMAzL6/AN/V1gDNwsIA8PDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYh5pSKUAPRJ6ITOGS3acfYyMiGcvgaaZIpePgKyMjIyMjJ0oNGsRoKqvDlFCaoyMjJaCmxqOjkc5LAgHo5OMjIyzdCkyJqJ4Oi2ney5yYLCpDCw7OE9klASotV2rAiOIBRh1thy4YZFwG21ciV98WVBUtJ4WRTaEUrgJFJJvjWUnoVcXjIyMjDB/Woq3rg8xJB0+i4yMjIyMlU5xeWw8SWcKY4uMjIyMjFhzDStvn1aMRF41jIyMjIwfTFUVJU2IjK0TpB+MjIyMZioQgyBBjIxFaIUBhzaxQZp+pkoLjIyMjIyMdwZAA1uQU7KYjIyMjIyMjG6tGUM/N0aLi4yMjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+
+<div class="container-fluid" style="text-align: center; margin-top: 0%;">
+		<h2 style="float: left; margin-left: 1%;">
+			<span>Face</span><span class="bg-primary" style="font-weight: bold; padding: 5px; border-radius: 15%;">Book</span> 
+			Clone
+		<h2>
+		
+		
+		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a href="{% url 'facebook:index' %}" title="Logout"><span class="glyphicon glyphicon-off"></span></a></h2>
+		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a data-toggle="modal" data-target="#mySearch" href="#" title="View other users..."><span class="glyphicon glyphicon-search"></span></a></h2>
+		<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+				
+				  <!-- Modal -->
+				<div class="modal fade" id="mySearch" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">View other profiles...</h4>
+						</div>
+						<form action="{% url 'facebook:search_user' %}" method="POST"> 
+							{% csrf_token %}
+						<div class="modal-body">	
+								<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+
+							<div class="form-group">
+								
+								<label for="sel1" style="float: left;">Select user profile to see:</label>
+									<select class="form-control" id="sel1" name="profileSelected">
+										{% for user in all_users %}
+										<option>{{ user.user_name }}</option>
+										{% endfor %}
+									</select>
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-primary">Search</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						</div>
+						</form>
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+		<!-- Script MsgChecker -->
+		<script type="text/javascript">
+			function checkMsgRead(){
+				var actual_class = document.getElementById("msgEnvContainer").className
+				if (actual_class == "text-danger"){
+					document.getElementById("msgEnvContainer").className = "text-primary";
+				}
+			}
+		</script>
+
+		{% for data in verified_user.user_view_set.all %}
+		{% if data.user_view_count == 1 %}
+		<h2 onclick="checkMsgRead()" style="float: right; margin-left: 2%; margin-right: 1%;"><a id="msgEnvContainer" class="{{ data.user_view_msg }}" data-toggle="modal" data-target="#myMsg" href="#" title="Check Messages..."><span class="glyphicon glyphicon-envelope"></span></a></h2>
+		{% else %}
+		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a id="msgEnvContainer" class="text-primary" data-toggle="modal" data-target="#myMsg" href="#" title="Check Messages..."><span class="glyphicon glyphicon-envelope"></span></a></h2>
+		{% endif %}
+		{% endfor %}
+		<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+				
+				  <!-- Modal -->
+				<div class="modal fade" id="myMsg" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header bg-primary">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Messages</h4>
+						</div>
+
+						<div class="modal-body bg-default" style="overflow-y: auto; height: 500px;">	
+
+							<div style="margin-bottom: 20px;padding: 30px; width: 100%; border-radius:7px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+								<p class="text-primary">• Message Feed •</p>
+								<p>
+								Welcome to the FaceBook Clone <strong style="color: brown;">{{ verified_user.user_name.capitalize }}</strong>, <br />♦ Please have a pleasant experience ☻ ♦
+								</p>
+								<br />
+								<button type="button" data-toggle="collapse" data-target="#dummyMsgResponse" class="btn btn-primary">Respond</button>
+								<br />
+							
+								<div id="dummyMsgResponse" class="collapse" style="width: 100%; padding: 30px; margin: 10px 0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="form-group">
+									<label style="float: left;" for="Msgcomment">Your Message:</label>
+									<textarea class="form-control" rows="5" id="Msgcomment" name="textAreaMsg"></textarea>
+									<br />
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								</div>
+								
+							</div>
+							
+							
+							
+							<!-- New Msg -->
+							
+							{% if verified_user.user_msg_set.all %}
+							<p class="text-primary"><span class="glyphicon glyphicon-circle-arrow-down"></span> • Latest Messages • <span class="glyphicon glyphicon-circle-arrow-down"></span></p>
+							{% for data in verified_user.user_msg_set.all reversed %}
+							<div style="margin-bottom: 20px;padding: 30px; width: 100%; border-radius:7px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+								<p style="text-align: left;"><span style=" color: brown;" class="glyphicon glyphicon-envelope"></span> On {{ data.sent_on }} <strong style="color: brown;">{{ data.sent_by }}</strong> wrote: </p>
+								<p>
+								{{ data.msg_content }}
+								</p>
+								<br />
+								<button type="button" data-toggle="collapse" data-target="#{{ data.id }}" class="btn btn-primary">Respond</button>
+								<br />
+								
+								<form id="{{ data.id }}" class="collapse" action="{% url 'facebook:send_msg' %}" method="POST"> 
+								 {% csrf_token %}
+								
+								
+								<div style="width: 100%; padding: 30px; margin: 10px 0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="form-group">
+									<label style="float: left;" for="Msgcomment">Your Message:</label>
+									<textarea class="form-control" rows="5" id="Msgcomment" name="textAreaMsg" required></textarea>
+									<br />
+									<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+									<input style="display: none;" type="text" name="checkUserIDmsgReceiver" value="{{ data.respond_to }}" />
+									<button type="submit" class="btn btn-danger">Send</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+								</div>
+								</form>
+								
+							</div>
+							{% endfor %}
+							{% else %}
+							<!-- No Msg -->
+							<div style="margin-bottom: 20px;padding: 30px; width: 100%; border-radius:7px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+								<p>No New Messages</p>
+							</div>
+							{% endif %}
+							
+						</div>
+						<div class="modal-footer">
+
+							<!-- <button type="submit" class="btn btn-primary">Search</button> -->
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						</div>
+						<!-- </form> -->
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+		<h2 style="float: right;">Welcome {{ verified_user.user_name.capitalize }}</h2>
+	
+	<br /><br />
+	
+	<br />
+</div>
+
+<div class="container-fluid">
+
+	
+	<div class="panel panel-primary" style="margin: 0 1%;">
+		<div class="panel-heading">
+		<h2>Your Profile</h2>
+		</div>
+		<div class="panel-body" style="text-align: left;">
+		
+			<div style="float: left;">
+			<img title="View Profile Picture" data-toggle="modal" data-target="#myImage" class="img-rounded" style="cursor:pointer; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:300px; height:284px;" 
+			 {% if verified_user.user_photo_set.all %}
+			  {% for data in verified_user.user_photo_set.all %}
+				src="{{ data.profile_picture_link }}"
+			  {% endfor %}
+			 {%  else %}
+			 src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
+			 {% endif %}
+			 />
+				<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+			
+				  <!-- Modal -->
+				<div class="modal fade" id="myImage" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title" style="text-align: center;">Profile Picture</h4>
+						</div>
+
+						<div class="modal-body">	
+							<div class="form-group">
+								<img 
+								{% if verified_user.user_photo_set.all %}
+								 {% for data in verified_user.user_photo_set.all %}
+								   src="{{ data.profile_picture_link }}"
+								 {% endfor %}
+								{%  else %}
+								   src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
+								{% endif %} 
+								class="img-rounded" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:100%; height:100%;" >
+							</div>
+						</div>
+						
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
+						
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+				
+				
+				<div style="margin:10px 40px;">
+					
+				<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-default text-default" data-toggle="modal" data-target="#myUpload">Upload New Profile Picture <span class="glyphicon glyphicon-edit"></span></button>
+
+				  <!-- Modal -->
+				<div class="modal fade" id="myUpload" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><span style="vertical-align: middle;" class="glyphicon glyphicon-user text-primary"></span> Edit Your Profile Picture</h4>
+						</div>
+						
+						<div class="modal-body" style="text-align: center;">
+													
+							<div class="form-group">
+								<img 
+								{% if verified_user.user_photo_set.all %}
+								 {% for data in verified_user.user_photo_set.all %}
+								   src="{{ data.profile_picture_link }}"
+								 {% endfor %}
+								{%  else %}
+								   src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
+								{% endif %} 
+								class="img-rounded" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:300px; height:284px;" >
+							</div>	
+							
+							<div style="margin:10px 40px;">
+					
+								<form style="text-align: center;" action="{% url 'facebook:validate_upload' %}" method="post" enctype="multipart/form-data">
+								{% csrf_token %}
+									<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+									<input style="display: none;" type="text" name="checkUserEmail" value="{{ verified_user.user_email }}" />
+									<input style="display: none;" type="text" name="checkUserPassword" value="{{ verified_user.user_password }}" />
+									
+									<input style="margin-left: 30%;" type="file" name="myfile">
+									<br />
+									<button class="btn btn-primary" type="submit">Upload <span class="glyphicon glyphicon-edit"></span></button>
+				
+								</form>
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						</div>
+						
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+					
+				</div>
+			</div>
+			
+			<div style="padding: 20px; width: 70%; float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<h2>About</h2>
+				
+				{% if verified_user.user_options_set.all %}
+				{% for data in verified_user.user_options_set.all %}
+				<p>{{ data.about_bio }}</p>
+				{% endfor %}
+				{% else %}
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula scelerisque magna in commodo. Aenean in nibh ut mi dapibus suscipit. Donec quis porta eros. Etiam in hendrerit orci. Ut vel odio non nisi tincidunt maximus eu faucibus lorem. Aliquam congue sem est. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus consequat ligula eu lorem vulputate ornare. Proin in sem dolor. Mauris aliquet eleifend lacus, convallis sagittis nunc lacinia laoreet. Suspendisse varius efficitur augue. Aliquam mollis arcu at nulla vestibulum imperdiet. Vivamus porttitor purus sed dolor posuere, ac consequat urna mattis. Integer dictum sollicitudin ligula vel egestas. Pellentesque feugiat est velit, vitae fringilla arcu consequat nec. Nulla rhoncus metus vel magna pretium, id pharetra ipsum vehicula.
+				</p>
+				{% endif %}
+				
+				{% if verified_user.user_options_set.all %}
+				{% for data in verified_user.user_options_set.all %}
+				<h3>Location: {{ data.about_location }}</h3>
+				{% endfor %}
+				{% else %}
+				<h3>Location: Cape Town</h3>
+				{% endif %}
+				
+				
+				<div style="float: right;">
+				
+				<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-default text-default" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil"></span></button>
+
+				  <!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Edit Info</h4>
+						</div>
+						<form action="{% url 'facebook:edit_info' %}" method="POST"> 
+							{% csrf_token %}
+						<div class="modal-body">
+							
+								
+								<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+								
+							<p>-</p>
+							<div class="form-group">
+								<label for="comment">About You:</label>
+								<textarea class="form-control" rows="5" id="comment" name="textAreaAbout">{{ edit_about }}</textarea>
+							</div>
+							<p>-</p>
+							<div class="form-group">
+								<label for="usr">Your Location:</label>
+								<input type="text" class="form-control" id="usr" name="inputLocation" value="{{ edit_location }}">
+							</div>
+						</div>
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						</div>
+						</form>
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+
+				</div>
+			</div>
+			
+			<hr style="clear: both;" />
+			
+			<div style="text-align:center; clear: both; padding: 30px; width: 100%;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<p class="text-primary" style="font-weight: bold">News Feed</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula scelerisque magna in commodo. Aenean in nibh ut mi dapibus suscipit. Donec quis porta eros.</p>
+				<br />
+				<!-- Pop up -->
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-default text-default" data-toggle="modal" data-target="#myPost"><em>Say Something...</em><span class="glyphicon glyphicon-sunglasses"></span></button>
+
+				  <!-- Modal -->
+				<div class="modal fade" id="myPost" role="dialog">
+					<div class="modal-dialog">
+						
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"><span class="glyphicon glyphicon-grain"></span>Express Yourself<span class="glyphicon glyphicon-grain"></span></h4>
+						</div>
+						<form action="{% url 'facebook:make_post' %}" method="POST"> 
+							{% csrf_token %}
+						<div class="modal-body">
+							
+								<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+
+							<div class="form-group">
+								<label for="comment">Say something:</label>
+								<textarea class="form-control" rows="5" id="comment" name="textAreaPost"></textarea>
+							</div>
+
+						</div>
+						<div class="modal-footer">
+
+							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							
+						</div>
+						</form>
+					</div>
+					  
+					</div>
+				</div>
+				<!-- End Pop up-->
+			</div>
+			
+			<!-- Posts -->
+			{% if verified_user.user_posts_set.all %}
+				{% for data in verified_user.user_posts_set.all %}
+				<div style="margin-top: 20px; text-align:center; clear: both; padding: 30px; width: 100%;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+				<p class="text-primary" style="font-weight: bold; text-align: left;"><em>On {{ data.pub_date }} - {{ verified_user.user_name }} said..."</em></p>
+				<p>{{ data.post_made }}</p>
+				<p style="width: 100%;">
+					<form style="float: left; color: brown;" action="{% url 'facebook:like_post' %}" method="POST"> 
+							{% csrf_token %}
+							<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+							<input style="display: none;" type="text" name="checkPostID" value="{{ data.id }}" />
+							<button type="submit" class="" style="background-color: white; border: none;">Like <i class="glyphicon glyphicon-thumbs-up" style="vertical-align: middle;"></i></button><span style="margin-right: 5px; float: left; color: brown;"> {{ data.likes }}</span>
+					</form>
+
+					<form style="float: right; color: brown;" action="{% url 'facebook:delete_post' %}" method="POST"> 
+							{% csrf_token %}
+							<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+							<input style="display: none;" type="text" name="checkPostID" value="{{ data.id }}" />
+							<button type="submit" class="" style="background-color: white; border: none;"><span style="float: right; color: red;" class="glyphicon glyphicon-remove-circle"></span></button>
+					</form>
+				</p>
+				</div>
+				{% endfor %}
+			{% else %}
+				
+			{% endif %}
+			
+		</div>
+		<div class="panel-footer panel-primary">
+		<span class="glyphicon glyphicon-fire text-primary" style=""></span>
+		</div>
+	</div>
+
+</div>
+</body>
+
+</html>
