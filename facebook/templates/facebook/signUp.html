@@ -1,58 +1,50 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Registration | facebook Clone</title>
-	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAACXiYYA9vTzAPnz8ADk4NwA5d7fALKcmgDn4NwA+fX2AOng3ADl4uIA3s/FAPz9/ACyioAA29TUAO7r6wDy7usAzsLDAKqYmABgTUsA7OHXANXLzADYyskA+vj3APn5+gC6nZUAxLi4ALShoQDn5uYA6ubmAN3PxgDt5uYA/v39AN3RzAB/aGUAyMC+ANC6tQDVvbUA8+3pAM3BwQDKp6EArJuZAMGurQDk3d4A08bHAMOysADCs7MA9/f1AMS3tgD7/PsA/fv4AMa4uQCfkY4AoY6OAPv9/gD9/f4AyL65ANrT0wC5paUAysC/AM7BwgD08e0Ab15bAPbz8wC/srEA6uPfAPv8/ACpioMAxbu6AODNwgD8/PwA/fz8ALSlpgDIu7oA///8AM66twDLvroA7+rrAN/T1ADv7u4A4tzdALmWjADp3toA9/f3AMa0rwDKtK8A2M3MAPv8/QDq5eYA/fz9AP/8/QDs6ekA3NbVAM6+uwDTvbgA9O/pAPPw7ACXg4IA8vLyAPTy8gD69fIA5+DhAPv59QD6+/sA+/v7AO3l3gDc0M0A/v77AKORkQDt6OcA29LTAP///gDv6+cA7u3tAN3W1gDz6+cA8O3tAK6TjgDOwr8A49nWAOXa0ADPxMUA0cTFAFxKRwDo3dkA6tzWAPj18wDUyMgA+Pb2AHlhXgDEtrcApomDANrMywD7+/wA8OPZALOmowD9+/wA+v//AN3PywDZ0dEA/P//AP///wDw6uUAuqipALCQjwDMxsMA9fHxANPDwwC4m5UA5ePjAPr6+gD7+voAxbm4AP79+gDIursA7OjpAKaPjQDu6+kA7uzsAO/s7ADz7+wAvbCwANbEvgDRx8cA+PPvAPb19QCuoJwAwrSzAMazsADW0NAA+v7+ANnQ0ADu5eEA/P7+AP79+wDr5+cA7efnAP7+/gD//v4AuaalALCLggDc1NMAzL6/AN/V1gDNwsIA8PDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYh5pSKUAPRJ6ITOGS3acfYyMiGcvgaaZIpePgKyMjIyMjJ0oNGsRoKqvDlFCaoyMjJaCmxqOjkc5LAgHo5OMjIyzdCkyJqJ4Oi2ney5yYLCpDCw7OE9klASotV2rAiOIBRh1thy4YZFwG21ciV98WVBUtJ4WRTaEUrgJFJJvjWUnoVcXjIyMjDB/Woq3rg8xJB0+i4yMjIyMlU5xeWw8SWcKY4uMjIyMjFhzDStvn1aMRF41jIyMjIwfTFUVJU2IjK0TpB+MjIyMZioQgyBBjIxFaIUBhzaxQZp+pkoLjIyMjIyMdwZAA1uQU7KYjIyMjIyMjG6tGUM/N0aLi4yMjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+	<title>Registration | Facebook Clone</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'facebook/images/favicon.png' %}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-<div class="container-fluid" style="text-align: center; margin-top: 2%;">
+	<div class="container-fluid" style="text-align: center; margin-top: 2%;">
 		<h2>
 			<span>Face</span><span class="bg-primary" style="font-weight: bold; padding: 5px; border-radius: 15%;">Book</span> 
 			Clone
-		<h2>
-
+		</h2>
 		<br />
-		
-	<h3>{{ message }}</h3>
-	<br />
-</div>
-
-<div class="container-fluid">
-	
-	<div class="panel panel-danger" style="margin: 0 1%;">
-		<div class="panel-heading">
-		<h2>Details of <strong>{{ new_user.user_name.capitalize }}</strong></h2>
-
-		</div>
-		<div class="panel-body" style="text-align: center;">
-			<p>Name: <strong>{{ new_user.user_name.capitalize }}</strong></p>
-			<p>Email: <strong>{{ new_user.user_email }}</strong></p>
-			<p>Password: <strong>{{ new_user.user_password }}</strong></p>
-		</div>
-		<div class="panel-footer panel-danger">
-		<span class="glyphicon glyphicon-fire" style="color:brown;"></span>
-		</div>
+		<h3>Congratulations - Account Successfully Created</h3>
+		<br />
 	</div>
 
-	
-	<div style="width: 100%; text-align center;">
-	<form action="{% url 'facebook:profile' %}" method="POST"> 
-	 {% csrf_token %}
-		<label style="display: none;">Email: </label><br />
-		<input style="display: none;" type="text" name="checkUserEmail" value="{{ new_user.user_email }}" /><br />
-		<label style="display: none;">Password: </label><br />
-		<input style="display: none;" type="text" name="checkUserPassword" value={{ new_user.user_password }} /><br /><br />
-		<button style="margin-left: 45%;" class="btn btn-primary" type="submit">Continue to Profile</button>
-	</form>
-	</div>
-	
+	<div class="container-fluid">
+		<div class="panel panel-primary" style="margin: auto; max-width: 500px;">
+			<div class="panel-heading" style="text-align: center; background-color: rgba(0, 0, 255, .9);">
+				<h2>Details of <strong>{{ new_user.user_name.capitalize }}</strong></h2>
+			</div>
+			<div class="panel-body" style="text-align: center;">
+				<p>Name: <strong>{{ new_user.user_name.capitalize }}</strong></p>
+				<p>Email: <strong>{{ new_user.user_email }}</strong></p>
+				<p>Password: <strong>{{ new_user.user_password }}</strong></p>
+			</div>
+			<div class="panel-footer panel-danger">
+				<span class="glyphicon glyphicon-fire" style="color:rgba(0, 0, 255, .6);"></span>
+			</div>
+		</div>
 
-</div>
+		<div style="width: 100%; text-align: center;">
+			<form action="{% url 'facebook:profile' %}" method="POST"> 
+				{% csrf_token %}
+				<input style="display: none;" type="hidden" name="checkUserEmail" value="{{ new_user.user_email }}" /><br />
+				<input style="display: none;" type="hidden" name="checkUserPassword" value="{{ new_user.user_password }}" /><br /><br />
+				<button class="btn btn-primary" type="submit">Continue to Profile</button>
+			</form>
+		</div>
+	</div>
 </body>
 
 </html>

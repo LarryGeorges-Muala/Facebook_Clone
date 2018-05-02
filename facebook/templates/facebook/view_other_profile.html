@@ -1,176 +1,150 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Friends Profile | facebook Clone</title>
-	<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAACXiYYA9vTzAPnz8ADk4NwA5d7fALKcmgDn4NwA+fX2AOng3ADl4uIA3s/FAPz9/ACyioAA29TUAO7r6wDy7usAzsLDAKqYmABgTUsA7OHXANXLzADYyskA+vj3APn5+gC6nZUAxLi4ALShoQDn5uYA6ubmAN3PxgDt5uYA/v39AN3RzAB/aGUAyMC+ANC6tQDVvbUA8+3pAM3BwQDKp6EArJuZAMGurQDk3d4A08bHAMOysADCs7MA9/f1AMS3tgD7/PsA/fv4AMa4uQCfkY4AoY6OAPv9/gD9/f4AyL65ANrT0wC5paUAysC/AM7BwgD08e0Ab15bAPbz8wC/srEA6uPfAPv8/ACpioMAxbu6AODNwgD8/PwA/fz8ALSlpgDIu7oA///8AM66twDLvroA7+rrAN/T1ADv7u4A4tzdALmWjADp3toA9/f3AMa0rwDKtK8A2M3MAPv8/QDq5eYA/fz9AP/8/QDs6ekA3NbVAM6+uwDTvbgA9O/pAPPw7ACXg4IA8vLyAPTy8gD69fIA5+DhAPv59QD6+/sA+/v7AO3l3gDc0M0A/v77AKORkQDt6OcA29LTAP///gDv6+cA7u3tAN3W1gDz6+cA8O3tAK6TjgDOwr8A49nWAOXa0ADPxMUA0cTFAFxKRwDo3dkA6tzWAPj18wDUyMgA+Pb2AHlhXgDEtrcApomDANrMywD7+/wA8OPZALOmowD9+/wA+v//AN3PywDZ0dEA/P//AP///wDw6uUAuqipALCQjwDMxsMA9fHxANPDwwC4m5UA5ePjAPr6+gD7+voAxbm4AP79+gDIursA7OjpAKaPjQDu6+kA7uzsAO/s7ADz7+wAvbCwANbEvgDRx8cA+PPvAPb19QCuoJwAwrSzAMazsADW0NAA+v7+ANnQ0ADu5eEA/P7+AP79+wDr5+cA7efnAP7+/gD//v4AuaalALCLggDc1NMAzL6/AN/V1gDNwsIA8PDwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYh5pSKUAPRJ6ITOGS3acfYyMiGcvgaaZIpePgKyMjIyMjJ0oNGsRoKqvDlFCaoyMjJaCmxqOjkc5LAgHo5OMjIyzdCkyJqJ4Oi2ney5yYLCpDCw7OE9klASotV2rAiOIBRh1thy4YZFwG21ciV98WVBUtJ4WRTaEUrgJFJJvjWUnoVcXjIyMjDB/Woq3rg8xJB0+i4yMjIyMlU5xeWw8SWcKY4uMjIyMjFhzDStvn1aMRF41jIyMjIwfTFUVJU2IjK0TpB+MjIyMZioQgyBBjIxFaIUBhzaxQZp+pkoLjIyMjIyMdwZAA1uQU7KYjIyMjIyMjG6tGUM/N0aLi4yMjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" rel="icon" type="image/x-icon" />
+	<title>Friends Profile | Facebook Clone</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'facebook/images/favicon.png' %}"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
+<style>
+@media screen and (max-width: 600px){
+	.FaceClone-header{display: block;}
+	.top-navigation-items{margin-right: 10% !important;}
+	.clone-profile-container{margin: 5% 0.5% 0 0.5% !important;}
+	.clone-profile-picture-container{float: none !important; margin-bottom: 50px;}
+	.clone-profile-picture{width: 100% !important;}
+	.clone-about-container{width: 100% !important;}
+}
+</style>
 <body>
 
-
 <div class="container-fluid" style="text-align: center; margin-top: 0%;">
-		<h2 style="float: left; margin-left: 1%;">
+		<h2 class="FaceClone-header" style="float: left; margin-left: 1%;">
 			<span>Face</span><span class="bg-primary" style="font-weight: bold; padding: 5px; border-radius: 15%;">Book</span> 
 			Clone
-		<h2>
+		</h2>
 		
 		
-		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a href="{% url 'facebook:index' %}" title="Logout"><span class="glyphicon glyphicon-off"></span></a></h2>
+		<h2 class="top-navigation-items" style="float: right; margin-left: 2%; margin-right: 1%;"><a href="{% url 'facebook:logout' %}" title="Logout"><span class="glyphicon glyphicon-off"></span></a></h2>
 		
-		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a data-toggle="modal" data-target="#mySearch" href="#" title="View other users..."><span class="glyphicon glyphicon-search"></span></a></h2>
+		<h2 class="top-navigation-items" style="float: right; margin-left: 2%; margin-right: 1%;"><a data-toggle="modal" data-target="#mySearch" href="#" title="View other users..."><span class="glyphicon glyphicon-search"></span></a></h2>
 		<!-- Pop up -->
-				<!-- Trigger the modal with a button -->
-				
-				  <!-- Modal -->
-				<div class="modal fade" id="mySearch" role="dialog">
-					<div class="modal-dialog">
-						
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">View other profiles...</h4>
-						</div>
-						<form action="{% url 'facebook:search_user' %}" method="POST"> 
-							{% csrf_token %}
-						<div class="modal-body">	
-								<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
-
-							<div class="form-group">								
-								<label for="sel1" style="float: left;">Select user profile to see:</label>
-									<select class="form-control" id="sel1" name="profileSelected">
-										{% for user in all_users %}
-										<option>{{ user.user_name }}</option>
-										{% endfor %}
-									</select>
-							</div>
-						</div>
-						<div class="modal-footer">
-
-							<button type="submit" class="btn btn-primary">Search</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							
-						</div>
-						</form>
+		<!-- Modal -->
+		<div class="modal fade" id="mySearch" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">View other profiles...</h4>
 					</div>
-					  
+					<form action="{% url 'facebook:search_user' %}" method="GET"> 
+					<div class="modal-body">	
+						<div class="form-group">								
+							<label for="sel1" style="float: left;">Select user profile to see:</label>
+							<select class="form-control" id="sel1" name="profileSelected">
+								{% for user in all_users %}
+								<option>{{ user.user_name }}</option>
+								{% endfor %}
+							</select>
+						</div>
 					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Search</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+					</form>
 				</div>
-				<!-- End Pop up-->
-		<h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a data-toggle="modal" data-target="#myMsg" href="#" title="Send Message To {{ selected_user_profile.user_name.capitalize }}"><span class="glyphicon glyphicon-envelope"></span></a></h2>
+			</div>
+		</div>
+		<!-- End Pop up-->
+		<h2 class="top-navigation-items" style="float: right; margin-left: 2%; margin-right: 1%;"><a data-toggle="modal" data-target="#myMsg" href="#" title="Send Message To {{ selected_user_profile.user_name.capitalize }}"><span class="glyphicon glyphicon-envelope"></span></a></h2>
 		<!-- Pop up -->
-				<!-- Trigger the modal with a button -->
-				
-				  <!-- Modal -->
-				<div class="modal fade" id="myMsg" role="dialog">
-					<div class="modal-dialog">
-						
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header bg-primary">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Messages</h4>
-						</div>
-						<form action="{% url 'facebook:send_msg_other_profile' %}" method="POST"> 
-							{% csrf_token %} 
+		<!-- Modal -->
+		<div class="modal fade" id="myMsg" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header bg-primary">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Messages</h4>
+					</div>
+					<form action="{% url 'facebook:send_msg_other_profile' %}" method="POST"> 
+						{% csrf_token %} 
 						<div class="modal-body bg-default">	
-
-								<div style="width: 100%; padding: 30px; margin: 10px 0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="form-group">
-									<label style="float: left;" for="Msgcomment">Send Message To <span style="color: brown;">{{ selected_user_profile.user_name.capitalize }}</span>:</label>
-									<textarea class="form-control" rows="5" id="Msgcomment" name="textAreaSendMsg" required></textarea>
-									<br />
-									<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
-									<input style="display: none;" type="text" name="checkUserIDmsgReceiver" value="{{ selected_user_profile.id }}" />
-									<button type="submit" class="btn btn-danger">Send</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-								</div>						
-
+							<div style="width: 100%; padding: 30px; margin: 10px 0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="form-group">
+								<label style="float: left;" for="Msgcomment">Send Message To <span style="color: brown;">{{ selected_user_profile.user_name.capitalize }}</span>:</label>
+								<textarea class="form-control" rows="5" id="Msgcomment" name="textAreaSendMsg" required></textarea>
+								<br />
+								<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
+								<input style="display: none;" type="text" name="checkUserIDmsgReceiver" value="{{ selected_user_profile.id }}" />
+								<button type="submit" class="btn btn-danger">Send</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+							</div>						
 						</div>
-						</form>
-					</div>
-					  
-					</div>
+					</form>
 				</div>
-				<!-- End Pop up-->	
-		<form style="float: right;" action="{% url 'facebook:profile' %}" method="POST"> 
-			{% csrf_token %}
-			<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
-			<input style="display: none;" type="text" name="checkUserEmail" value="{{ verified_user.user_email }}" />
-			<input style="display: none;" type="text" name="checkUserPassword" value="{{ verified_user.user_password }}" />
-			<button type="submit" class="" style="background-color: white; border: none;"><h2 style="float: right; margin-left: 2%; margin-right: 1%;"><a href="#" title="Back To Your Profile"><span class="glyphicon glyphicon-user"></span></a></h2></button>
-		</form>
-	
-	<br /><br />
-
-	<br />
+			</div>
+		</div>
+		<!-- End Pop up-->
+		<h2 class="top-navigation-items" style="float: right; margin-left: 2%; margin-right: 1%;"><a href="{% url 'facebook:profile' %}" title="Back To Your Profile"><span class="glyphicon glyphicon-user"></span></a></h2>	
+	<br /><br /><br />
 </div>
 
 <div class="container-fluid">
-
-	
-	<div class="panel panel-warning" style="margin: 0 1%;">
+	<div class="panel panel-warning clone-profile-container" style="margin: 0 1%;">
 		<div class="panel-heading">
-		<h2>{{ selected_user_profile.user_name.capitalize }}'s Profile</h2>
+			<h2 style="color: brown;">{{ selected_user_profile.user_name.capitalize }}'s Profile</h2>
 		</div>
 		<div class="panel-body" style="text-align: left;">
-		
-			<div style="float: left;">
-			<img title="View Profile Picture" data-toggle="modal" data-target="#myImage" class="img-rounded" style="cursor:pointer; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:300px; height:284px;" 
-			 {% if selected_user_profile.user_photo_set.all %}
-			  {% for data in selected_user_profile.user_photo_set.all %}
-				src="{{ data.profile_picture_link }}"
-			  {% endfor %}
-			 {%  else %}
-			 src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
-			 {% endif %}
-			 />
+			<div class="clone-profile-picture-container" style="float: left;">
+				<img title="View Profile Picture" data-toggle="modal" data-target="#myImage" class="img-rounded clone-profile-picture" style="cursor:pointer; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:300px; height:284px;" 
+				{% if selected_user_profile.user_photo_set.all %}
+				{% for data in selected_user_profile.user_photo_set.all %}
+					src="{{ data.profile_picture_link }}"
+				{% endfor %}
+				{%  else %}
+				src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
+				{% endif %}
+				/>
 				<!-- Pop up -->
-				<!-- Trigger the modal with a button -->
-				
-				  <!-- Modal -->
+				<!-- Modal -->
 				<div class="modal fade" id="myImage" role="dialog">
 					<div class="modal-dialog">
-						
-					<!-- Modal content-->
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title" style="text-align: center;">Profile Picture</h4>
-						</div>
-
-						<div class="modal-body">	
-							<div class="form-group">
-								<img 
-								{% if selected_user_profile.user_photo_set.all %}
-								 {% for data in selected_user_profile.user_photo_set.all %}
-								   src="{{ data.profile_picture_link }}"
-								 {% endfor %}
-								{%  else %}
-								   src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
-								{% endif %} 
-								class="img-rounded" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:100%; height:100%;" >
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title" style="text-align: center;">Profile Picture</h4>
+							</div>
+							<div class="modal-body">	
+								<div class="form-group">
+									<img 
+									{% if selected_user_profile.user_photo_set.all %}
+									{% for data in selected_user_profile.user_photo_set.all %}
+									src="{{ data.profile_picture_link }}"
+									{% endfor %}
+									{%  else %}
+									src="http://vignette1.wikia.nocookie.net/charmscrp/images/a/ac/Generic_Avatar.png/revision/latest?cb=20140819033443"
+									{% endif %} 
+									class="img-rounded" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width:100%; height:100%;" >
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							</div>
 						</div>
-						
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						</div>
-						
-					</div>
-					  
 					</div>
 				</div>
 				<!-- End Pop up-->
-
 			</div>
 			
-			<div style="padding: 20px; width: 70%; float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+			<div class="clone-about-container" style="padding: 20px; width: 70%; float: right; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
 				<h2>About</h2>
 				
 				{% if selected_user_profile.user_options_set.all %}
@@ -194,24 +168,20 @@
 			</div>
 			
 			<hr style="clear: both;" />
-			
 
-			
 			<!-- Posts -->
 			{% if selected_user_profile.user_posts_set.all %}
 				{% for data in selected_user_profile.user_posts_set.all %}
 				<div style="margin-top: 20px; text-align:center; clear: both; padding: 30px; width: 100%;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
-				<p class="text-primary" style="font-weight: bold; text-align: left;"><em>On {{ data.pub_date }} - {{ selected_user_profile.user_name }} said..."</em></p>
-				<p>{{ data.post_made }}</p>
-				<p style="width: 100%;">
-					<form style="float: left; color: brown;" action="{% url 'facebook:like_post_other_profile' %}" method="POST"> 
-							{% csrf_token %}
-							<input style="display: none;" type="text" name="checkUserID" value="{{ verified_user.id }}" />
-							<input style="display: none;" type="text" name="profileSelected" value="{{ selected_user_profile.id }}" />
-							<input style="display: none;" type="text" name="checkPostID" value="{{ data.id }}" />
-							<button type="submit" class="" style="background-color: white; border: none;">Like <i class="glyphicon glyphicon-thumbs-up" style="vertical-align: middle;"></i></button><span style="margin-right: 5px; float: left; color: brown;"> {{ data.likes }}</span>
-					</form>
-				</p>
+					<p class="text-primary" style="font-weight: bold; text-align: left;"><em>On {{ data.pub_date }} - {{ selected_user_profile.user_name }} said:</em></p>
+					<p>{{ data.post_made }}</p>
+					<p style="width: 100%;">
+						<form style="float: left; color: brown;" action="{% url 'facebook:like_post_other_profile' %}" method="POST"> 
+								{% csrf_token %}
+								<input style="display: none;" type="hidden" name="checkPostID" value="{{ data.id }}" />
+								<button type="submit" class="" style="background-color: white; border: none;">Like <i class="glyphicon glyphicon-thumbs-up" style="vertical-align: middle;"></i></button><span style="margin-right: 5px; float: left; color: brown;"> {{ data.likes }}</span>
+						</form>
+					</p>
 				</div>
 				{% endfor %}
 			{% else %}
@@ -221,13 +191,11 @@
 				<br />
 			</div>
 			{% endif %}
-			
 		</div>
 		<div class="panel-footer panel-warning">
-		<span class="glyphicon glyphicon-fire text-warning" style=""></span>
+			<span class="glyphicon glyphicon-fire text-warning"></span>
 		</div>
 	</div>
-
 </div>
 </body>
 

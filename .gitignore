@@ -4,3 +4,7 @@ staticfiles
 .env
 db.sqlite3
 local_settings.py
+facebook/templates/facebook/profile.1.html
+facebook/templates/facebook/profile.2.html
+facebook/views.1.py
+facebook/models.1.py
